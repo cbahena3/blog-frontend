@@ -1,36 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Welcome, Cristian.</h1>
-      <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="cow" width={400} height={250}/>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 10)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite (left) and React (right) logos to learn more
-      </p>
-    </>
+function Header() {
+  return(
+    <header>
+      <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a>
+    </header>
   )
 }
 
-export default App
+function PostNew() {
+  return(
+    <div id="posts-new">
+      <h1>New post</h1>
+      <form>
+        <p>Title: <input type="text" /></p>
+        <p>Body: <input type="text" /></p>
+        <p>Image: <input type="text" /></p>
+        <button>Submit</button>
+      </form>
+    </div>
+  )
+}
+
+function PostIndex(){
+  return(
+    <div id="posts-index">
+      <h1>All posts</h1>
+      <div className='Audi RS7'>
+        <h2>Audi RS7</h2>
+        <p>Audi’s RS 7 Sportback can be safely described as a lean, mean, and enticing machine. Sporting a feisty four-liter V8 engine and a clever all-wheel-drive system which almost everybody knows what it’s called, this German land rocket can reach 62 mph (100 kph) from a standstill in just 3.6 seconds.</p>
+        <img src="https://s1.cdn.autoevolution.com/images/news/spectacular-looking-2023-audi-rs-7-reveals-its-dark-side-in-this-in-depth-look-208506_1.jpg" alt="Audi RS7" />
+      </div>
+
+      <div className='BMW M3'>
+        <h2>BMW M3</h2>
+        <p>At the heart of all M3 models is a 3.0-litre inline turbo-six. As used in the rear-drive M3 it makes 473 horsepower and 406 pound-feet of torque at 2,650 rpm. That’s more than enough to qualify as entertaining, and it delivers a posted average fuel economy of 12.6 L/100 km.</p>
+        <img src="https://smartcdn.gprod.postmedia.digital/driving/wp-content/uploads/2023/07/2024-BMW-M3-CS-gf6-e1691680449417.jpg" alt="BMW M3" />
+      </div>
+
+      <div className='Mercedes C63 Amg'>
+        <h2>Mercedes C63 Amg</h2>
+        <p>Good day, introducing 2021 Mercedes-AMG C63 with custom made body kit. It has handmade or hand built twin-turbocharged 4.0-liter V-8 engine. In the C63, it produces 469 horsepower and 479 lb-ft of torque. The C63 S improves performance with 503 horsepower and 516 lb-ft of torque. Both engines use a nine-speed automatic with rear-wheel drive. Top speeds are electronically limited to 155 mph on the regular C63 and 180 mph on the S.</p>
+        <img src="https://img1.cgtrader.com/items/3701404/efe701725a/large/3d-mercedes-benz-amg-c63-bn-59-3d-model-obj-fbx-blend-gltf.jpg" alt="Mercedes C63 Amg" />
+      </div>
+    </div>
+  )
+}
+
+function Footer(){
+  return(
+    <footer>
+      <p>Copyright 2024</p>
+    </footer>
+  )
+}
+
+function Content(){
+  return(
+    <div>
+      <PostNew />
+      <PostIndex />
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <Content />
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
