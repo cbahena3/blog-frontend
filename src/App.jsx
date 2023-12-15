@@ -17,6 +17,7 @@ function App() {
         </a>
       </div>
       <h1>Welcome, Cristian.</h1>
+      <img src="https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg" alt="cow" width={400} height={250}/>
       <div className="card">
         <button onClick={() => setCount((count) => count + 10)}>
           count is {count}
