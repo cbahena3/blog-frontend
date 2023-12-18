@@ -1,7 +1,7 @@
 import { PostsIndex } from './PostsIndex';
 import { PostsNew } from './PostsNew';
 import axios from "axios";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -12,10 +12,12 @@ export function Content() {
     })
   };
 
+  useEffect(handleIndexPosts, [])
+
   return (
     <div>
       <PostsNew />
-      <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button>
+      {/* <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button> */}
       <PostsIndex posts={posts} />
     </div>
   );
