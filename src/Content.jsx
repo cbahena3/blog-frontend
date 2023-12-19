@@ -7,6 +7,7 @@ import { Modal } from './Modal';
 export function Content() {
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+  const [currentPost, setCurrentPost] = useState({});
 
   const handleIndexPosts = () =>{
     axios.get("http://localhost:3000/posts.json").then(response => {console.log(response.data)
@@ -14,13 +15,12 @@ export function Content() {
     })
   };
 
-  const handleShowPost = () => {
-    console.log('hello')
+  const handleShowPost = (post) => {
     setIsPostsShowVisible(true);
+    setCurrentPost(post);
   };
 
   const handleClose = () => {
-    console.log('bye')
     setIsPostsShowVisible(false);
   };
 
@@ -32,7 +32,9 @@ export function Content() {
       {/* <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button> */}
       <PostsIndex posts={posts} onShowPost = {handleShowPost} />
       <Modal show={isPostsShowVisible} onClose= {handleClose}>
-        <p>THIS IS A TEST</p>
+      <h2>Title: {currentPost.title}</h2>
+      <h2>Description: {currentPost.body}</h2>
+      <h2>Image URL: {currentPost.image}</h2>
       </Modal>
     </div>
   );
