@@ -5,6 +5,7 @@
 h1,
 h2 {
   text-transform: capitalize;
+  color: rgb(0, 106, 255);
 }
 
 html {
