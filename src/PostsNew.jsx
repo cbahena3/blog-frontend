@@ -7,6 +7,7 @@ export function PostsNew(props) {
     event.preventDefault()
     const params = new FormData(event.target)
     props.onCreatePost(params);
+    event.target.reset()
     console.log("Creating post")
   }
 
