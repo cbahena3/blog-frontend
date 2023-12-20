@@ -32,6 +32,9 @@ export function Content() {
     })
   };
 
+
+
+
   useEffect(handleIndexPosts, [])
 
   return (
