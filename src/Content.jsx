@@ -25,11 +25,18 @@ export function Content() {
     setIsPostsShowVisible(false);
   };
 
+  const handleCreatePost = (params) => {
+    console.log("Handling Create Post")
+    axios.post("http://localhost:3000/posts.json", params).then(response => {
+      setPosts([...posts, response.data]);
+    })
+  };
+
   useEffect(handleIndexPosts, [])
 
   return (
     <div>
-      <PostsNew />
+      <PostsNew onCreatePost = {handleCreatePost}/>
       {/* <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button> */}
       <PostsIndex posts={posts} onShowPost = {handleShowPost} />
       <Modal show={isPostsShowVisible} onClose= {handleClose}>
