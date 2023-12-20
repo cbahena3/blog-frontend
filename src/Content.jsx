@@ -3,6 +3,7 @@ import { PostsNew } from './PostsNew';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { Modal } from './Modal';
+import { PostsShow } from './PostsShow';
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -32,9 +33,7 @@ export function Content() {
       {/* <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button> */}
       <PostsIndex posts={posts} onShowPost = {handleShowPost} />
       <Modal show={isPostsShowVisible} onClose= {handleClose}>
-      <h2>Title: {currentPost.title}</h2>
-      <h2>Description: {currentPost.body}</h2>
-      <h2>Image URL: {currentPost.image}</h2>
+        <PostsShow post = {currentPost}/>
       </Modal>
     </div>
   );

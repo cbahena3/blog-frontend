@@ -51,3 +51,8 @@ button {
   text-transform: uppercase;
   margin-bottom: 1em;
 }
+
+img {
+  width: 400px;
+  height: 300px;
+}
