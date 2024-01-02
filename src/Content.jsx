@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { Modal } from './Modal';
 import { PostsShow } from './PostsShow';
+import { Signup } from './Signup';
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -32,18 +33,32 @@ export function Content() {
     })
   };
 
-
+  const handleUpdatePost = (id, props) => {
+    axios.patch(`http://localhost:3000/posts/${props.post.id}.json`, params).then(response => {
+      console.log(response.data)
+      setPosts(
+        posts.map(post => {
+          if (post.id === response.data.id){
+            return response.data
+          } else {
+            return post
+          }
+        })
+      )
+    })
+  }
 
 
   useEffect(handleIndexPosts, [])
 
   return (
     <div>
+      <Signup />
       <PostsNew onCreatePost = {handleCreatePost}/>
       {/* <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button> */}
       <PostsIndex posts={posts} onShowPost = {handleShowPost} />
       <Modal show={isPostsShowVisible} onClose= {handleClose}>
-        <PostsShow post = {currentPost}/>
+        <PostsShow post = {currentPost} onUpdatePost = {handleUpdatePost}/>
       </Modal>
     </div>
   );
