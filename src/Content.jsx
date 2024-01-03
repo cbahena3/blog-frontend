@@ -5,6 +5,11 @@ import { useState, useEffect } from 'react';
 import { Modal } from './Modal';
 import { PostsShow } from './PostsShow';
 import { Signup } from './Signup';
+import { Login } from './Login';
+import { LogoutLink } from './LogoutLink';
+import { Routes, Route } from "react-router-dom";
+import { About } from "./About";
+import { Link } from "react-router-dom";
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -53,7 +58,11 @@ export function Content() {
 
   return (
     <div>
-      <Signup />
+      <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
       <PostsNew onCreatePost = {handleCreatePost}/>
       {/* <button onClick={handleIndexPosts}> PRESS FOR ALL POSTS </button> */}
       <PostsIndex posts={posts} onShowPost = {handleShowPost} />
